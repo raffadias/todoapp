@@ -5,13 +5,19 @@ import { Input } from "./Input";
 interface ModalProps {
   visible: boolean;
   closeModal: () => void;
-  confirmAction: (title: string, description: string) => void;
+  confirmAction: (id: number | null, title: string, description: string) => void;
+  type: 'create' | 'edit';
+  cardToEdit?: Card
 }
 
-export function Modal({visible, closeModal, confirmAction}: ModalProps) {
+export function Modal({ visible, closeModal, confirmAction, type, cardToEdit }: ModalProps) {
 
-  const [title, setTitle] = useState('');
-  const [desc, setDesc] = useState('');
+  if(!visible) {
+    return null;
+  }
+
+  const [title, setTitle] = useState(type === 'edit' ? cardToEdit?.title as string : '');
+  const [desc, setDesc] = useState(type === 'edit' ? cardToEdit?.description as string : '');
 
   function clearInputs() {
     setTitle('');
@@ -19,14 +25,12 @@ export function Modal({visible, closeModal, confirmAction}: ModalProps) {
   }
 
   function handleConfirmation() {
-    confirmAction(title, desc);
+    type === 'create' ? confirmAction(null, title, desc) : confirmAction(cardToEdit?.id!, title, desc)
     clearInputs();
     closeModal();
   }
 
-  if(!visible) {
-    return null;
-  }
+
 
   return (
     <main className='h-screen w-screen bg-black dark:bg-white dark:bg-opacity-20 bg-opacity-80 absolute z-20 flex justify-center items-center'>

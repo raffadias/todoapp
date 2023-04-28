@@ -3,24 +3,38 @@ import { Card } from './components/Card';
 import { Modal } from './components/Modal';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { useCardStore } from './store/card';
-import { useState } from 'react';
+import { useModalStore } from './store/modal';
 
 export default function App() {
-  const [isVisible, setIsVisible] = useState(false);
+
+  const modalCreateVisible = useModalStore((state) => state.modalCreateVisible);
+  const toggleModalCreate = useModalStore((state) => state.toggleModalCreate);
+
+  const modalEditVisible = useModalStore((state) => state.modalEditVisible);
+  const toggleModalEdit = useModalStore((state) => state.toggleModalEdit);
 
   const cards = useCardStore((state) => state.cards);
   const addCard = useCardStore((state) => state.addCard);
 
-  function handleCardInfo(title: string, description: string) {
-    addCard(title, description);
+  const cardToEdit = useCardStore((state) => state.cardToEdit);
+  const editCard = useCardStore((state) => state.editCard);
+
+  function handleCreateCard(id: number | null, title: string, description: string) {
+    addCard(id, title, description);
+  }
+
+  function handleEditCard(id: number | null, title: string, description: string) {
+    editCard({id, title, description});
   }
 
 	return (
-    <main className='h-screen overflow-y-hidden overflow-x-hidden bg-gray-200 dark:bg-gray-500 flex flex-col transition-all ease-in-out delay-100'>
+    <main className='h-screen overflow-y-hidden overflow-x-hidden bg-gray-200 dark:bg-gray-500 flex
+    flex-col transition-all ease-in-out delay-100'>
       <div className='flex items-center justify-between w-screen'>
         <button
-            onClick={() => setIsVisible(prevState => !prevState)}
-            className='hover:text-gray-800 hover:dark:text-gray-800 dark:text-gray-200 text-gray-500 flex items-center gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
+            onClick={() => toggleModalCreate()}
+            className='hover:text-gray-800 hover:dark:text-gray-800 dark:text-gray-200 text-gray-500 flex items-center
+            gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
           >
             Nova tarefa
             <MdAdd size={24}/>
@@ -36,9 +50,17 @@ export default function App() {
         {cards.map((card) => <Card key={card.id} id={card.id} title={card.title} description={card.description}/>)}
       </div>
       <Modal
-        visible={isVisible}
-        closeModal={() => setIsVisible(prevState => !prevState)}
-        confirmAction={handleCardInfo}
+        visible={modalCreateVisible}
+        closeModal={() => toggleModalCreate()}
+        confirmAction={handleCreateCard}
+        type='create'
+      />
+      <Modal
+        visible={modalEditVisible}
+        closeModal={() => toggleModalEdit()}
+        confirmAction={handleEditCard}
+        type='edit'
+        cardToEdit={cardToEdit}
       />
     </main>
 )}
