@@ -4,4 +4,5 @@ type CardStateProps = {
   cardToEdit: Card | undefined;
   setCardToEdit: (card: Card) => void;
   editCard: (card: Card) => void;
+  deleteCard: (cardId: number) => void;
 }

@@ -10,6 +10,11 @@
   overflow-wrap: break-word;
 }
 
+.dropdown-item {
+  @apply flex items-center justify-between px-4 py-2 hover:dark:bg-gray-800 hover:bg-gray-500
+  hover:cursor-pointer rounded-md transition-all duration-200;
+}
+
 @layer utilities {
   /* Customize scrollbar appearance */
   ::-webkit-scrollbar {
