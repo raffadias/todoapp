@@ -11,14 +11,9 @@ export function Card({id, title, description}: Card) {
   const deleteCard = useCardStore((state) => state.deleteCard);
   const [dropdownVisible, setDrowdownVisible] = useState<boolean>(false);
 
-  // function handleToggleModalEdit() {
-  //   setCardInfo({id, title, description});
-  //   toggleModalEdit();
-  // }
-
   function openDropdown() {
     setCardInfo({id, title, description});
-    setDrowdownVisible(prevState => !prevState)
+    setDrowdownVisible(prevState => !prevState);
   }
 
   return (
@@ -26,6 +21,7 @@ export function Card({id, title, description}: Card) {
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
+        exit={{scale: 0}}
         className='h-60 min-w-[20rem] bg-gray-500 dark:bg-gray-700 m-5 rounded-lg'
       >
           <div className='w-full flex justify-between items-center p-4 text-gray-200 font-bold text-xl'>
@@ -49,7 +45,11 @@ export function Card({id, title, description}: Card) {
                     absolute right-5 bottom-[105px] z-30 rounded-md flex flex-col items-center'
                   >
                     <ul>
-                      <li className='dropdown-item' onClick={toggleModalEdit}>
+                      <li className='dropdown-item' onClick={() => {
+                          toggleModalEdit();
+                          setDrowdownVisible(prevState => !prevState);
+                        }}
+                      >
                         <MdEditNote size={20}/>
                       </li>
                       <li className='dropdown-item' onClick={() => deleteCard(id as number)}>
