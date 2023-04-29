@@ -16,7 +16,7 @@ export default function App() {
   const cards = useCardStore((state) => state.cards);
   const addCard = useCardStore((state) => state.addCard);
 
-  const cardToEdit = useCardStore((state) => state.cardToEdit);
+
   const editCard = useCardStore((state) => state.editCard);
 
   function handleCreateCard(id: number | null, title: string, description: string) {
@@ -60,7 +60,6 @@ export default function App() {
         closeModal={() => toggleModalEdit()}
         confirmAction={handleEditCard}
         type='edit'
-        cardToEdit={cardToEdit}
       />
     </main>
 )}
