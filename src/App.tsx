@@ -32,8 +32,10 @@ export default function App() {
     flex-col transition-all ease-in-out delay-100'>
       <div className='flex items-center justify-between w-screen'>
         <button
+            disabled={modalEditVisible}
             onClick={() => toggleModalCreate()}
-            className='hover:text-gray-800 hover:dark:text-gray-800 dark:text-gray-200 text-gray-500 flex items-center
+            className='hover:text-gray-800 hover:dark:text-gray-800 dark:text-gray-200
+            text-gray-500 disabled:hover:text-gray-500 disabled:hover:dark:text-gray-200 flex items-center
             gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
           >
             Nova tarefa
