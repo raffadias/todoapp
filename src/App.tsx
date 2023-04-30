@@ -30,7 +30,7 @@ export default function App() {
 	return (
     <main className='h-screen overflow-y-hidden overflow-x-hidden bg-gray-200 dark:bg-gray-500 flex
     flex-col transition-all ease-in-out delay-100'>
-      <div className='flex items-center justify-between w-screen'>
+      <header className='flex items-center bg-gray-500 dark:bg-gray-700 w-full justify-between p-2 rounded-sm'>
         <button
             disabled={modalEditVisible}
             onClick={() => toggleModalCreate()}
@@ -42,8 +42,8 @@ export default function App() {
             <MdAdd size={24}/>
           </button>
         <ThemeSwitch />
-      </div>
-      <div className='flex overflow-y-auto w-screen h-screen justify-center flex-wrap items-center mt-5'>
+      </header>
+      <div className='flex overflow-y-auto w-screen h-screen flex-wrap justify-center items-start mt-5'>
         {cards.length === 0 && (
           <h1 className='font-bold dark:text-gray-200 text-gray-800 transition-all ease-in-out delay-100'>
             Você não possui tarefas.

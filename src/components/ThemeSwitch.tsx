@@ -19,7 +19,7 @@ export function ThemeSwitch() {
   return (
     <button
       onClick={toggleTheme}
-      className="absolute top-0 right-0 bg-transparent text-gray-500 hover:text-gray-800 hover:dark:text-gray-800 dark:text-gray-200 p-2 rounded transition-all duration-300"
+      className="text-gray-500 hover:text-gray-800 hover:dark:text-gray-800 dark:text-gray-200 rounded transition-all duration-300"
     >
       {theme === 'dark' && <MdSunny size={32} />}
       {theme === 'light' && <IoMdMoon size={32} />}
