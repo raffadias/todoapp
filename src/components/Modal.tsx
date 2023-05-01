@@ -50,7 +50,7 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
           className='h-screen w-screen
           absolute z-20 flex justify-center items-center'
         >
-          <div className='h-[60%] w-[40%] bg-gray-500 dark:bg-gray-700 rounded-md'>
+          <div className='h-[60%] w-[40%] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl'>
             <div className='flex justify-between items-center text-white font-bold font-sans text-xl mx-8 mt-4'>
               {type === 'create' ? 'Adicione' : 'Edite'} as informações da sua tarefa
               <button

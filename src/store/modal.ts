@@ -12,6 +12,11 @@ const useStore = create<ModalStateProps>()(
       return (
       { modalEditVisible: !prevState.modalEditVisible }
     )}),
+    modalDeleteVisible: false,
+    toggleModalDelete: () => set((prevState) => {
+      return (
+      { modalDeleteVisible: !prevState.modalDeleteVisible }
+    )})
   }));
 
 export const useModalStore = useStore;

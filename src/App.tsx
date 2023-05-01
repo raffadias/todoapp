@@ -4,6 +4,7 @@ import { Modal } from './components/Modal';
 import { ThemeSwitch } from './components/ThemeSwitch';
 import { useCardStore } from './store/card';
 import { useModalStore } from './store/modal';
+import { ModalConfirmation } from './components/ModalConfirmation';
 
 export default function App() {
 
@@ -12,6 +13,9 @@ export default function App() {
 
   const modalEditVisible = useModalStore((state) => state.modalEditVisible);
   const toggleModalEdit = useModalStore((state) => state.toggleModalEdit);
+
+  const modalDeleteVisible = useModalStore((state) => state.modalDeleteVisible);
+  const toggleModalDelete = useModalStore((state) => state.toggleModalDelete);
 
   const cards = useCardStore((state) => state.cards);
   const addCard = useCardStore((state) => state.addCard);
@@ -62,6 +66,10 @@ export default function App() {
         closeModal={() => toggleModalEdit()}
         confirmAction={handleEditCard}
         type='edit'
+      />
+      <ModalConfirmation
+        visible={modalDeleteVisible}
+        closeModal={() => toggleModalDelete()}
       />
     </main>
 )}

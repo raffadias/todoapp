@@ -6,9 +6,14 @@ import { useState } from 'react';
 
 export function Card({id, title, description}: Card) {
   const modalCreateVisible = useModalStore((state) => state.modalCreateVisible);
+
   const toggleModalEdit = useModalStore((state) => state.toggleModalEdit);
+
+  const toggleModalDelete = useModalStore((state) => state.toggleModalDelete);
+
   const setCardInfo = useCardStore((state) => state.setCardToEdit);
   const deleteCard = useCardStore((state) => state.deleteCard);
+
   const [dropdownVisible, setDrowdownVisible] = useState<boolean>(false);
 
   function openDropdown() {
@@ -52,7 +57,13 @@ export function Card({id, title, description}: Card) {
                       >
                         <MdEditNote size={20}/>
                       </li>
-                      <li className='dropdown-item' onClick={() => deleteCard(id as number)}>
+                      <li
+                        className='dropdown-item'
+                        onClick={() => {
+                          toggleModalDelete();
+                          setDrowdownVisible(prevState => !prevState);
+                        }}
+                      >
                         <MdDelete size={20}/>
                       </li>
                     </ul>

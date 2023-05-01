@@ -3,4 +3,6 @@ type ModalStateProps = {
   toggleModalCreate: () => void;
   modalEditVisible: boolean;
   toggleModalEdit: () => void;
+  modalDeleteVisible: boolean;
+  toggleModalDelete: () => void;
 }
