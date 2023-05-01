@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useThemeStore } from '../store/theme';
 import { MdSunny } from 'react-icons/md';
 import { IoMdMoon } from 'react-icons/io';
+import { motion } from 'framer-motion';
 
 export function ThemeSwitch() {
 
@@ -21,8 +22,22 @@ export function ThemeSwitch() {
       onClick={toggleTheme}
       className="text-gray-200 hover:text-gray-800 hover:dark:text-gray-800 rounded transition-all duration-300"
     >
-      {theme === 'dark' && <MdSunny size={32} />}
-      {theme === 'light' && <IoMdMoon size={32} />}
+      {theme === 'dark' && (
+        <motion.div
+          animate={{ rotate: 180 }}
+          transition={{ from: 0, duration: 0.5 }}
+        >
+          <MdSunny size={32} />
+        </motion.div>
+      )}
+      {theme === 'light' && (
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ from: 0, duration: 0.5 }}
+        >
+          <IoMdMoon size={32} />
+        </motion.div>
+      )}
     </button>
   )
 }
