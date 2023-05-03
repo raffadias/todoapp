@@ -1,4 +1,3 @@
-import { MdClose, MdDeleteForever } from "react-icons/md";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCardStore } from "../store/card";
 

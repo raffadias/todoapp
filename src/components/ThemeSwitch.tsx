@@ -24,16 +24,16 @@ export function ThemeSwitch() {
     >
       {theme === 'dark' && (
         <motion.div
-          animate={{ rotate: 180 }}
-          transition={{ from: 0, duration: 0.5 }}
+          animate={{ rotate: 360 }}
+          transition={{ from: 0, duration: 1 }}
         >
           <MdSunny size={32} />
         </motion.div>
       )}
       {theme === 'light' && (
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ from: 0, duration: 0.5 }}
+          animate={{ rotate: -360 }}
+          transition={{ from: 0, duration: 1 }}
         >
           <IoMdMoon size={32} />
         </motion.div>

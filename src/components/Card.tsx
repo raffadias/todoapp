@@ -21,23 +21,29 @@ export function Card({id, title, description}: Card) {
     setDrowdownVisible(prevState => !prevState);
   }
 
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  }
+
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        exit={{scale: 0}}
+        variants={item}
         className='h-60 min-w-[20rem] bg-gray-500 dark:bg-gray-700 m-5 rounded-lg'
       >
           <div className='w-full flex justify-between items-center p-4 text-gray-200 font-bold text-xl'>
             {title}
-            <div className='cursor-pointer hover:text-gray-800'>
+            <motion.div whileTap={{ scale: 0.5 }} className='cursor-pointer hover:text-gray-800'>
               <MdOutlineMoreVert
                 size={24}
                 onClick={openDropdown}
                 disabled={modalCreateVisible}
               />
-            </div>
+            </motion.div>
           </div>
           <div className='relative z-20'>
             <AnimatePresence>

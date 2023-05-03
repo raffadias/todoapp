@@ -5,6 +5,7 @@ import { ThemeSwitch } from './components/ThemeSwitch';
 import { useCardStore } from './store/card';
 import { useModalStore } from './store/modal';
 import { ModalConfirmation } from './components/ModalConfirmation';
+import { motion } from 'framer-motion';
 
 export default function App() {
 
@@ -31,20 +32,37 @@ export default function App() {
     editCard({id, title, description});
   }
 
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  }
+
 	return (
-    <main className='h-screen overflow-y-hidden overflow-x-hidden bg-gray-200 dark:bg-gray-500 flex
+    <motion.main
+    variants={container}
+    initial="hidden"
+    animate="visible"
+    className='h-screen overflow-y-hidden overflow-x-hidden bg-gray-200 dark:bg-gray-500 flex
     flex-col transition-all ease-in-out delay-100'>
       <header className='flex items-center bg-gray-500 dark:bg-gray-700 w-full justify-between p-2 rounded-sm'>
-        <button
+        <motion.button
+            whileTap={{ scale: 0.7 }}
             disabled={modalEditVisible}
             onClick={() => toggleModalCreate()}
             className='hover:text-gray-800 hover:dark:text-gray-800
             text-gray-200 disabled:hover:text-gray-500 disabled:hover:dark:text-gray-200 flex items-center
-            gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
+            gap-1 font-semibold p-2 rounded-md transition-all ease-in-out'
           >
             Nova tarefa
             <MdAdd size={24}/>
-          </button>
+          </motion.button>
         <ThemeSwitch />
       </header>
       <div className='flex overflow-y-auto w-screen h-screen flex-wrap justify-center items-start mt-5'>
@@ -71,5 +89,5 @@ export default function App() {
         visible={modalDeleteVisible}
         closeModal={() => toggleModalDelete()}
       />
-    </main>
+    </motion.main>
 )}
