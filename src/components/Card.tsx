@@ -12,7 +12,6 @@ export function Card({id, title, description}: Card) {
   const toggleModalDelete = useModalStore((state) => state.toggleModalDelete);
 
   const setCardInfo = useCardStore((state) => state.setCardToEdit);
-  const deleteCard = useCardStore((state) => state.deleteCard);
 
   const [dropdownVisible, setDrowdownVisible] = useState<boolean>(false);
 
