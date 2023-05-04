@@ -26,7 +26,7 @@ export function ModalConfirmation({ visible, closeModal }: ModalProps) {
           className='h-screen w-screen
           absolute z-20 flex justify-center items-center'
         >
-          <div className='h-[40%] md:h-[50%] lg:h-[40%] sm:w-[40%] md:w-[30%] lg:w-[30%] xl:w-[30%] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl'>
+          <div className='h-[35%] max-md:h-[40%] max-sm:h-[43%] w-[fit-content] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl'>
             <div className='flex flex-col h-full text-white font-bold font-sans text-xl mx-8 mt-4'>
               <h3 className='text-center my-10'>
                 Tem certeza de que deseja deletar a tarefa {cardToEdit?.title}?

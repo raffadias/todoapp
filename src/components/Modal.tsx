@@ -54,7 +54,7 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
         exit={{ scale: 0.9 }}
           className='absolute z-20 flex justify-center items-center h-full w-full'
         >
-          <div className='h-[70%] sm:w-[80%] md:w-[70%] lg:w-[40%]  bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl overflow-hidden'>
+          <div className='h-[fit-content] pb-5 max-sm:w-[80%] max-md:w-[70%] max-lg:w-[60%] max-xl:w-[40%]  bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl overflow-hidden'>
             <div className='flex justify-between items-center text-white font-bold font-sans text-xl mx-8 mt-4'>
               <p className='xl:text-xl lg:text-lg md:text-base sm:text-sm mr-4'>
                 {type === 'create' ? 'Adicione' : 'Edite'} as informações da sua tarefa
