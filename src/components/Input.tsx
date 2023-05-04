@@ -24,6 +24,7 @@ export function Input({label, type, value, setValue}: InputProps) {
           type={type}
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          maxLength={20}
         />
       )}
     </div>
