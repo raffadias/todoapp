@@ -45,16 +45,16 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
       {visible && (
         <motion.main
         initial={{ scale: 0 }}
-        animate={{  scale: 1 }}
+        animate={{  scale: 0.9 }}
         transition={{
           type: "spring",
           stiffness: 260,
           damping: 20
         }}
-        exit={{ scale: 1 }}
+        exit={{ scale: 0.9 }}
           className='absolute z-20 flex justify-center items-center h-full w-full'
         >
-          <div className='sm:h-[70%] h-[70%] sm:w-[80%] md:w-[70%] lg:w-[40%] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl overflow-hidden'>
+          <div className='h-[80%] 2xl:h-[50%] sm:w-[80%] md:w-[70%] lg:w-[40%]  bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl overflow-hidden'>
             <div className='flex justify-between items-center text-white font-bold font-sans text-xl mx-8 mt-4'>
               <p className='xl:text-xl lg:text-lg md:text-base sm:text-sm mr-4'>
                 {type === 'create' ? 'Adicione' : 'Edite'} as informações da sua tarefa
@@ -72,7 +72,7 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
             <div className='w-[90%] mx-auto mt-10'>
               <Input label='Descrição' type='textarea' value={desc} setValue={setDesc}/>
             </div>
-            <div className='flex w-full justify-center items-center mt-5'>
+            <div className='flex w-full justify-center items-center mt-12 sm:mt-16'>
               <button
                   onClick={handleConfirmation}
                   className='bg-green-700 hover:bg-green-800 text-gray-200 w-[90%] shadow-lg flex items-center justify-center gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
