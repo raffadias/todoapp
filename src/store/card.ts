@@ -5,6 +5,7 @@ const useStore = create<CardStateProps>()(persist(
   (set) => ({
     cards: [],
     addCard: (id: number | null, title: string, description: string) => set((prevState) => {
+      console.log(id);
       return (
       { cards: [...prevState.cards, { id: prevState.cards.length + 1, title, description }] }
     )}),
