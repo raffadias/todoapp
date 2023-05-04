@@ -74,8 +74,9 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
             </div>
             <div className='flex w-full justify-center items-center mt-12 sm:mt-16'>
               <button
+                  disabled={title.length === 0}
                   onClick={handleConfirmation}
-                  className='bg-green-700 hover:bg-green-800 text-gray-200 w-[90%] shadow-lg flex items-center justify-center gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
+                  className='bg-green-700 hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:opacity-50 text-gray-200 w-[90%] shadow-lg flex items-center justify-center gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
                 >
                   Confirmar
                   <MdCheck size={24}/>
