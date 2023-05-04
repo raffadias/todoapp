@@ -44,14 +44,21 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
     <AnimatePresence>
       {visible && (
         <motion.main
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        initial={{ scale: 0 }}
+        animate={{  scale: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20
+        }}
+        exit={{ scale: 1 }}
           className='absolute z-20 flex justify-center items-center h-full w-full'
         >
-          <div className='h-[60%] w-[40%] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl overflow-hidden'>
+          <div className='sm:h-[70%] h-[70%] sm:w-[80%] md:w-[70%] lg:w-[40%] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl overflow-hidden'>
             <div className='flex justify-between items-center text-white font-bold font-sans text-xl mx-8 mt-4'>
-              {type === 'create' ? 'Adicione' : 'Edite'} as informações da sua tarefa
+              <p className='xl:text-xl lg:text-lg md:text-base sm:text-sm mr-4'>
+                {type === 'create' ? 'Adicione' : 'Edite'} as informações da sua tarefa
+              </p>
               <button
                 onClick={closeModal}
                 className='bg-red-500 dark:bg-red-500 hover:bg-red-800 hover:dark:bg-red-800 text-white font-semibold p-2 rounded-md shadow-2xl transition-all delay-50'

@@ -21,12 +21,12 @@ export function ModalConfirmation({ visible, closeModal }: ModalProps) {
       {visible && (
         <motion.main
           initial={{ scale: 0 }}
-          animate={{ scale: 0.9 }}
+          animate={{ scale: 1 }}
           exit={{ scale: 0 }}
           className='h-screen w-screen
           absolute z-20 flex justify-center items-center'
         >
-          <div className='h-[40%] w-[30%] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl'>
+          <div className='h-[50%] sm:w-[70%] md:w-[40%] lg:w-[40%] xl:w-[40%] bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl'>
             <div className='flex flex-col h-full text-white font-bold font-sans text-xl mx-8 mt-4'>
               <h3 className='text-center my-10'>
                 Tem certeza de que deseja deletar a tarefa {cardToEdit?.title}?
