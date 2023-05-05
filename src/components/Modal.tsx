@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { MdCheck, MdClose } from "react-icons/md";
-import { Input } from "./Input";
+import { useState, useEffect } from 'react';
+import { MdCheck, MdClose } from 'react-icons/md';
+import { Input } from './Input';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCardStore } from "../store/card";
-import { toast } from "react-toastify";
+import { useCardStore } from '../store/card';
+import { toast } from 'react-toastify';
 
 interface ModalProps {
   visible: boolean;
@@ -26,7 +26,7 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
       setTitle(cardToEdit?.title as string);
       setDesc(cardToEdit?.description as string);
     }
-  }, [cardToEdit])
+  }, [cardToEdit]);
 
   function clearInputs() {
     setTitle('');
@@ -34,7 +34,7 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
   }
 
   function handleConfirmation() {
-    type === 'create' ? confirmAction(null, title, desc) : confirmAction(id, title, desc)
+    type === 'create' ? confirmAction(null, title, desc) : confirmAction(id, title, desc);
     toast.success(type === 'create' ? 'Tarefa criada.' : 'Tarefa editada.', {
       icon:type === 'create' ? '✅' : '📃',
       position: 'bottom-right',
@@ -43,7 +43,7 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
       draggable: false,
       closeOnClick: true,
       theme: 'dark'
-    })
+    });
     clearInputs();
     closeModal();
   }
@@ -54,14 +54,14 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
     <AnimatePresence>
       {visible && (
         <motion.main
-        initial={{ scale: 0 }}
-        animate={{  scale: 0.9 }}
-        transition={{
-          type: "spring",
-          stiffness: 260,
-          damping: 20
-        }}
-        exit={{ scale: 0.9 }}
+          initial={{ scale: 0 }}
+          animate={{  scale: 0.9 }}
+          transition={{
+            type: 'spring',
+            stiffness: 260,
+            damping: 20
+          }}
+          exit={{ scale: 0.9 }}
           className='absolute z-20 flex justify-center items-center h-full w-full'
         >
           <div className='h-[fit-content] pb-5 max-sm:w-[80%] max-md:w-[70%] max-lg:w-[60%] max-xl:w-[40%]  bg-gray-500 dark:bg-gray-700 rounded-md shadow-2xl overflow-hidden'>
@@ -84,17 +84,17 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
             </div>
             <div className='flex w-full justify-center items-center mt-12 sm:mt-16'>
               <button
-                  disabled={title.length === 0}
-                  onClick={handleConfirmation}
-                  className='bg-green-700 hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:opacity-50 text-gray-200 w-[90%] shadow-lg flex items-center justify-center gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
-                >
+                disabled={title.length === 0}
+                onClick={handleConfirmation}
+                className='bg-green-700 hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:opacity-50 text-gray-200 w-[90%] shadow-lg flex items-center justify-center gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
+              >
                   Confirmar
-                  <MdCheck size={24}/>
+                <MdCheck size={24}/>
               </button>
             </div>
           </div>
         </motion.main>
       )}
     </AnimatePresence>
-  )
+  );
 }

@@ -39,5 +39,5 @@ export function ThemeSwitch() {
         </motion.div>
       )}
     </button>
-  )
+  );
 }

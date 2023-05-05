@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useCardStore } from "../store/card";
+import { useCardStore } from '../store/card';
 import { toast } from 'react-toastify';
 
 interface ModalProps {
@@ -23,7 +23,7 @@ export function ModalConfirmation({ visible, closeModal }: ModalProps) {
       draggable: false,
       closeOnClick: true,
       theme: 'dark'
-    })
+    });
   }
 
   return (
@@ -60,5 +60,5 @@ export function ModalConfirmation({ visible, closeModal }: ModalProps) {
         </motion.main>
       )}
     </AnimatePresence>
-  )
+  );
 }

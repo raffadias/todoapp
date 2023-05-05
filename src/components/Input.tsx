@@ -28,5 +28,5 @@ export function Input({label, type, value, setValue}: InputProps) {
         />
       )}
     </div>
-  )
+  );
 }

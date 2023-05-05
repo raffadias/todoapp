@@ -5,18 +5,18 @@ const useStore = create<ModalStateProps>()(
     modalCreateVisible: false,
     toggleModalCreate: () => set((prevState) => {
       return (
-      { modalCreateVisible: !prevState.modalCreateVisible }
-    )}),
+        { modalCreateVisible: !prevState.modalCreateVisible }
+      );}),
     modalEditVisible: false,
     toggleModalEdit: () => set((prevState) => {
       return (
-      { modalEditVisible: !prevState.modalEditVisible }
-    )}),
+        { modalEditVisible: !prevState.modalEditVisible }
+      );}),
     modalDeleteVisible: false,
     toggleModalDelete: () => set((prevState) => {
       return (
-      { modalDeleteVisible: !prevState.modalDeleteVisible }
-    )})
+        { modalDeleteVisible: !prevState.modalDeleteVisible }
+      );})
   }));
 
 export const useModalStore = useStore;
