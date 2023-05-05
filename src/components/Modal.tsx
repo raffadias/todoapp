@@ -3,6 +3,7 @@ import { MdCheck, MdClose } from "react-icons/md";
 import { Input } from "./Input";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCardStore } from "../store/card";
+import { toast } from "react-toastify";
 
 interface ModalProps {
   visible: boolean;
@@ -34,6 +35,15 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
 
   function handleConfirmation() {
     type === 'create' ? confirmAction(null, title, desc) : confirmAction(id, title, desc)
+    toast.success(type === 'create' ? 'Tarefa criada.' : 'Tarefa editada.', {
+      icon:type === 'create' ? '✅' : '📃',
+      position: 'bottom-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      draggable: false,
+      closeOnClick: true,
+      theme: 'dark'
+    })
     clearInputs();
     closeModal();
   }

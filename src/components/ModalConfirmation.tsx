@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCardStore } from "../store/card";
+import { toast } from 'react-toastify';
 
 interface ModalProps {
   visible: boolean;
@@ -14,6 +15,15 @@ export function ModalConfirmation({ visible, closeModal }: ModalProps) {
   function handleConfirmation() {
     deleteCard(cardToEdit?.id as number);
     closeModal();
+    toast.success('Tarefa deletada.', {
+      icon:'🗑',
+      position: 'bottom-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      draggable: false,
+      closeOnClick: true,
+      theme: 'dark'
+    })
   }
 
   return (

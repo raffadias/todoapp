@@ -6,6 +6,8 @@ import { useCardStore } from './store/card';
 import { useModalStore } from './store/modal';
 import { ModalConfirmation } from './components/ModalConfirmation';
 import { motion } from 'framer-motion';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
 
@@ -89,5 +91,6 @@ export default function App() {
         visible={modalDeleteVisible}
         closeModal={() => toggleModalDelete()}
       />
+      <ToastContainer />
     </motion.main>
 )}
