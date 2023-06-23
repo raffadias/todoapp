@@ -1,7 +1,6 @@
-
-interface InputProps {
+export interface InputProps {
   label: string;
-  type: string;
+  type: 'text' | 'textarea';
   value: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }

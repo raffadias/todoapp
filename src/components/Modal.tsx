@@ -4,6 +4,7 @@ import { Input } from './Input';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCardStore } from '../store/card';
 import { toast } from 'react-toastify';
+import { Button } from './Button';
 
 interface ModalProps {
   visible: boolean;
@@ -83,14 +84,14 @@ export function Modal({ visible, closeModal, confirmAction, type }: ModalProps) 
               <Input label='Descrição' type='textarea' value={desc} setValue={setDesc}/>
             </div>
             <div className='flex w-full justify-center items-center mt-12 sm:mt-16'>
-              <button
+              <Button
                 disabled={title.length === 0}
                 onClick={handleConfirmation}
-                className='bg-green-700 hover:bg-green-800 disabled:cursor-not-allowed disabled:bg-gray-500 disabled:hover:bg-gray-500 disabled:opacity-50 text-gray-200 w-[90%] shadow-lg flex items-center justify-center gap-1 font-semibold p-2 rounded-md transition-all ease-in-out delay-100'
+                variant='success'
               >
                   Confirmar
                 <MdCheck size={24}/>
-              </button>
+              </Button>
             </div>
           </div>
         </motion.main>

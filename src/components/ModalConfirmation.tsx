@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCardStore } from '../store/card';
 import { toast } from 'react-toastify';
+import { Button } from './Button';
 
 interface ModalProps {
   visible: boolean;
@@ -41,20 +42,18 @@ export function ModalConfirmation({ visible, closeModal }: ModalProps) {
               <h3 className='text-center my-10'>
                 Tem certeza de que deseja deletar a tarefa {cardToEdit?.title}?
               </h3>
-              <button
+              <Button
                 onClick={handleConfirmation}
-                className='bg-red-500 dark:bg-red-500 hover:bg-red-800 hover:dark:bg-red-800 flex w-full gap-1
-                justify-center items-center text-white font-semibold p-2 rounded-md shadow-2xl transition-all delay-50 mb-3'
+                variant='danger'
               >
                 Excluir
-              </button>
-              <button
+              </Button>
+              <Button
                 onClick={closeModal}
-                className='bg-gray-700 dark:bg-gray-500 hover:bg-gray-800 flex w-full gap-1 justify-center
-                items-center text-white font-semibold p-2 rounded-md shadow-2xl transition-all delay-50'
+                variant='primary'
               >
                 Cancelar
-              </button>
+              </Button>
             </div>
           </div>
         </motion.main>
